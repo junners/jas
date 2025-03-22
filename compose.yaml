@@ -1,4 +1,13 @@
 services:
+  database:
+    image: postgres:alpine
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: feature_flag
+      POSTGRES_USER: feature_flag
+      POSTGRES_PASSWORD: feature_flag
+
   application:
     build:
       context: .
@@ -7,3 +16,8 @@ services:
       - .env
     ports:
       - 8080:8080
+    depends_on:
+      - database
+
+volumes:
+  pgdata:
