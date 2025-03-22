@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { FeatureFlagModule } from './core/feature-flag/feature-flag.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [FeatureFlagModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
