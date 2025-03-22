@@ -9,12 +9,14 @@ async function bootstrap() {
   app.useGlobalFilters(new GlobalFilter(httpAdapter));
 
   const options = new DocumentBuilder()
-    .setTitle('Open Api Spec')
-    .setDescription('Integration with the app')
+    .setTitle('Usable APIs')
+    .setDescription(
+      'All APIs are set to public and could be used without authorization',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('/api/docs', app, document);
+  SwaggerModule.setup('internals/api/docs', app, document);
 
   await app.listen(process.env.PORT ?? 8080);
 }
