@@ -79,8 +79,9 @@
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s",
-      "!**/main.ts",
-      "!**/*.module.ts"
+      "!main.ts",
+      "!**/*.module.ts",
+      "!common/app-config/*.ts"
     ],
     "coverageDirectory": "../coverage",
     "coverageThreshold": {
