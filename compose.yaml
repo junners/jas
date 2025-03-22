@@ -4,9 +4,11 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: feature_flag
-      POSTGRES_USER: feature_flag
-      POSTGRES_PASSWORD: feature_flag
+      POSTGRES_DB: feature-flag
+      POSTGRES_USER: feature-flag
+      POSTGRES_PASSWORD: feature-flag
+    ports:
+      - 5432:5432
 
   application:
     build:
