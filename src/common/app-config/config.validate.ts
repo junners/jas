@@ -1,8 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { plainToInstance } from 'class-transformer';
 import {
-  IsBoolean,
   IsNumber,
   IsString,
   validateSync,
@@ -10,22 +7,11 @@ import {
 } from 'class-validator';
 
 class EnvironmentVariables {
-  @IsString()
-  DB_TYPE: string;
-  @IsString()
-  DB_HOST: string;
-  @IsNumber()
-  DB_PORT: number;
-  @IsString()
-  DB_USER: string;
-  @IsString()
-  DB_PASS: string;
-  @IsString()
-  DB_NAME: string;
-  @IsBoolean()
-  DB_SYNC: boolean;
   @IsNumber()
   APP_PORT: number;
+
+  @IsString()
+  PG_DATABASE_URL: string;
 }
 
 export function validate(config: Record<string, unknown>) {

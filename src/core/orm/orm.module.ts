@@ -1,16 +1,20 @@
 import { Module } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { coreOrmOptions } from './datasources/core.datasource';
+
+const coreOrmFactory = (): TypeOrmModuleOptions => ({
+  ...coreOrmOptions,
+  name: 'core',
+});
 
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
-      imports: [],
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
-        return configService.get('database') as TypeOrmModuleOptions;
-      },
+      useFactory: coreOrmFactory,
+      name: 'feature-flag',
     }),
   ],
+  exports: [OrmModule],
+  providers: [],
 })
-export class OrmModule {}
+export class OrmModule extends TypeOrmModule {}
